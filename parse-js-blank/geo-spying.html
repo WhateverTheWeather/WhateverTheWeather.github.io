@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <img src="http://i.imgur.com/FNEIjov.png">
+      <meta name="description" content="My Parse App">
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="css/reset.css">
+      <link rel="stylesheet" href="css/styles.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    </head>
+
+    <body>
+        <script src="spy-app.js"></script>
+    <script type="text/javascript">
+    Parse.initialize("wDjVVlo0q9ZJzzFOsfkNKsFIf3xWqwLXwXv29T2h", "qfWAIOVo9qEGQG2R6K0k9OnbLDApmLktMyjZ6KY5");
+    var query = new Parse.Query(true);
+     // query.equalTo("name", "kieran");
+      query.equalTo('True')
+      query.find({
+        success: function(true) {
+    alert("Successfully retrieved " + results.length + " Place.");
+    // Do something with the returned Parse.Object values
+    for (var i = 0; i < results.length; i++) {
+      var object = results[i];
+      alert(object.id + ' - ' + object.get('Location'));
+    }
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+    </body>
+
+</html>
+
+
