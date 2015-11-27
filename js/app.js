@@ -57,12 +57,41 @@ var APIKey = '3a258cbc6780350f0f0862c9708f21a5'
 
 function getTheWeather(position)
 {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + APIKey
-    console.log(url)
+    var URL = 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + APIKey
+    console.log(URL)
     // do the jQuery AJAX call (see Instagram exercise)
-    
+    $.ajax(
+{
+    dataType: "jsonp",
+    url: URL,
+    success: handleData
+})
+
+function handleData(json)
+{
+    console.log(json)
+
+    var weather = json.data
+    //loop through the images
+    var total = weather.length
+    var counter = 0
+    while (counter < total)
+    {
+        console.log(counter)
+        
+        var weatherid = weather[counter]
+        
+        console.log(weatherid)
+        
+        var weatherURL = weatherid.weather.id.url
+        
+        console.log(weatherURL)
+        counter = counter + 1
+        
+        
+    }}}
     // 
-}
+
 
 
 // 3 
