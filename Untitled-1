@@ -1,0 +1,60 @@
+
+{
+    // we're using jQuery's AJAX function to get data from Instagram
+    // see http://api.jquery.com/jquery.ajax
+    
+    
+    $.ajax(
+    {
+      dataType: "jsonp",
+      url: URL, 
+      success: gotMediaFromInstagram 
+    })
+}
+
+
+function gotMediaFromInstagram( json )
+{
+  console.log(json)
+
+  var pictures = json.data
+
+  // we loop through the pictures, one at a time
+  for (var counter = 0; counter < pictures.length; counter = counter + 1)
+  {
+    var picture = pictures[counter]
+    // console.log(picture)
+    
+    var imageURL = picture.images.standard_resolution.url
+    
+    // using underscorejs to filter out dodgy tags
+    
+    
+    var pictureDodgyTags = _(picture.tags).intersection(dodgyTags)
+    if (pictureDodgyTags.length > 0)
+    {
+        console.log('this image has ' + pictureDodgyTags.length + ' dodgy tags and is prolly dodgy ' + imageURL)
+        // don't display this picture
+    }
+    else if (picture.tags.length > maxTags) 
+    {
+        console.log('this image has ' + picture.tags.length + ' tags and is prolly spammy ' + imageURL)
+    }
+    else
+    {
+        var img = '<img src="' + imageURL + '" >'
+        container.append(img)
+    }
+
+    
+//    var likesCount = picture.likes.count
+//    if (likesCount == 0) likesCount = 1
+//    var tagsCount = picture.tags.length
+//    var tagsLikesRatio = tagsCount / likesCount
+//    var width = 100 - tagsLikesRatio
+//    console.log(tagsCount, likesCount, width)
+
+//    var img = '<img src=' + imageURL + ' width=' + width +'% >'
+    
+  }
+}
