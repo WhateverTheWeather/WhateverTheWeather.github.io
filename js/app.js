@@ -159,6 +159,7 @@ switch(weatherid){
         case 500:
         case 501:
             console.log ("Cloudy");
+            
             var currentWeather = 'Cloudy' 
 
             var Place = Parse.Object.extend('places')
