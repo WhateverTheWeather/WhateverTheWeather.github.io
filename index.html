@@ -1,54 +1,35 @@
 <!doctype html>
 <html>
     <head>
-      <meta charset="utf-8">
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width">
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />  
-      <script src="http://maps.googleapis.com/maps/api/js?v=3.14&sensor=false"></script> 
-      <link href="css/styles.css" rel="stylesheet" type="text/css"> 
+        <meta charset="utf-8">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />  
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
         
-    <title>WhateverTheWeather</title>
+        <title>WhateverTheWeather</title>
         
-      <link rel="stylesheet" href="css/reset.css"> 
-      <link rel="stylesheet" href="css/styles.css"> 
-      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+        <link rel="stylesheet" href="css/reset.css"> 
+        <link rel="stylesheet" href="css/styles.css"> 
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
     </head>
 
     <body>
         
         
         <div id= "top">
-        <img style="display: inline;" src="http://i.imgur.com/FNEIjov.png" width = "80%">
-        <img style="display: inline;" src="AnimatedGif/cloudy.gif" width = "30%"> <!--Placed an image here as a test-->
+        <img id="logo" src="http://i.imgur.com/FNEIjov.png" width="80%">
+        <img id="gif" src="AnimatedGif/waiting.gif" width="30%"> <!--Placed an image here as a test-->
         </div>
-        <div id="hotel_map"></div> 
-        <script src="js/script.js"></script> 
+        <div id="map"></div> 
+<!--        <script src="js/script.js"></script> -->
+        <script async defer src="//maps.googleapis.com/maps/api/js?key=AIzaSyAxARVBJNoH8awmi_ehnSDve9_PRs985xs&callback=initializeMap"></script>
         <script src="js/app.js"></script>
+<!--        <img id="cloudy" src="AnimatedGif/cloudy.gif">-->
         
-      <!--  <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="642" height="440" src="https://maps.google.com/maps?hl=en&q=Greenwich, UK&ie=UTF8&t=roadmap&z=15&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">embedgooglemaps.com</a></small></div><div><small><a href="http://buyproxies.io/">buy private proxies</a></small></div></iframe> -->
           
     </body>
 
 </html>
 
-<!--
-//JOE
-<!DOCTYPE html>
-<html> 
-<head> 
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-  <title>Google Maps Multiple Markers</title> 
-  <script src="http://maps.googleapis.com/maps/api/js?v=3.14&sensor=false"></script>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  
-</head> 
-<body>
-
-  <div id="hotel_map"></div>
-  <script src="script.js"></script>
-
-</body>
-</html>
--->

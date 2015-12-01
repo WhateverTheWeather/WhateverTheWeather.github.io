@@ -21,34 +21,9 @@ kieran.set('year', 1)*/
 navigator.geolocation.watchPosition(gotPosition)
 
 function gotPosition(position) 
-{
-    
-    
+{   
     getTheWeather(position)
-    
    /*console.log( "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);*/
-   
-    /*var point = new Parse.GeoPoint(
-    {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-    });
-
-    kieran.set('position', point)
-
-    kieran.save(null,
-    {
-        success: function(object)
-        {
-        // console.log(object)
-        console.log('My latitude is: ' + position.coords.latitude);
-        console.log('My Longitude is: ' + position.coords.longitude);
-        },
-        error: function(object,error)
-        {
-        console.error(error)
-        }
-    })*/
 }
 
 // 2
@@ -62,53 +37,30 @@ function getTheWeather(position)
 
     // do the jQuery AJAX call (see Instagram exercise)
     $.ajax(
-{
-    dataType: "jsonp",
-    url: URL,
-    success: handleData
-})
+    {
+        dataType: "jsonp",
+        url: URL,
+        success: handleData
+    })
 }
+
 function handleData(json)
 {
     console.log(json)
 
     var weather = json.weather[0]
-        
     var weatherid = weather.id
-    new Number(weatherid);  
     console.log(weatherid)
-    
-switch(weatherid){
+
+    var currentWeather = '' // empty by default
+   
+    switch(weatherid){
         case 800:
         case 801:
         case 802:
         case 951:
             console.log ("Sunny");
-            var currentWeather = 'Sunny' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Sunny' 
             break;
         case 300:
         case 301:
@@ -128,63 +80,14 @@ switch(weatherid){
         case 522:
         case 531:
             console.log ("Raining");
-            var currentWeather = 'Raining' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Raining' 
             break;
         case 803:
         case 804:
         case 500:
         case 501:
             console.log ("Cloudy");
-            
-            var currentWeather = 'Cloudy' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-//guessing i want to put joes code here
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Cloudy' 
             break;
         case 200:
         case 201:
@@ -204,87 +107,15 @@ switch(weatherid){
         case 961:
         case 962:
             console.log ("Stormy");
-            var currentWeather = 'Stormy' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Stormy' 
             break;
         case 701:
             console.log ("Wet");
-            var currentWeather = 'Wet' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Wet' 
             break;
         case 903:
             console.log ("Dry");
-            var currentWeather = 'Dry' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Dry' 
             break;
         case 905:
         case 952:
@@ -296,31 +127,7 @@ switch(weatherid){
         case 958:
         case 959:
             console.log ("Windy");
-            var currentWeather = 'Windy' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Windy' 
             break;
         case 600:
         case 601:
@@ -328,59 +135,11 @@ switch(weatherid){
         case 621:
         case 622:
             console.log ("Snow");
-            var currentWeather = 'Snow' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Snow' 
             break;
         case 904:
             console.log ("Humid");
-            var currentWeather = 'Humid' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Humid'
             break;
         case 711:
         case 721:
@@ -391,59 +150,11 @@ switch(weatherid){
         case 762:
         case 771:
             console.log ("Foggy");
-            var currentWeather = 'Foggy' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Foggy' 
             break;
         case 906:
             console.log ("Hail");
-            var currentWeather = 'Hail' 
-
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
-            console.log("Successfully retrieved " + results.length + " places.")
-
-            // Do something with the returned Parse.Object values
-            for (var i = 0; i < results.length; i++) 
-            {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
-
-            },
-            error: function(error) {
-            console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
+            currentWeather = 'Hail' 
             break;
         case 611:
         case 612:
@@ -451,37 +162,89 @@ switch(weatherid){
         case 616:
         case 620:
             console.log ("Sleet");
-            var currentWeather = 'Sleet' 
+            currentWeather = 'Sleet' 
+            break;
+        default:
+            console.log("Sorry, we could not find " + weatherid + ".");
+    }
+    
+    var weatherIconURL = 'AnimatedGif/' + currentWeather.toLowerCase() + '.gif'
+    $('#gif').attr('src', weatherIconURL);
+    
+    console.log('Going to fetch places for weather: ' + currentWeather)
+    
+    
+    
+    var Place = Parse.Object.extend('Places') // we're using the Places table from Parse
 
-            var Place = Parse.Object.extend('places')
-
-            var query = new Parse.Query(Place)
-            query.equalTo(currentWeather, true)
-            query.find(
-                {
-            success: function(results) 
-            {
+    var query = new Parse.Query(Place)
+    query.equalTo(currentWeather, true)
+    query.find(
+    {
+        success: function(results) 
+        {  
             console.log("Successfully retrieved " + results.length + " places.")
 
             // Do something with the returned Parse.Object values
             for (var i = 0; i < results.length; i++) 
             {
-            var place = results[i]
-            console.log(place.get('Name'))
-            }
+                var place = results[i]
+                var name = place.get('Name')
+                var position = place.get('Position')
+        
+                var latLng = new google.maps.LatLng(position._latitude, position._longitude)
+                bounds.extend(latLng)
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: name,
+                    info: name // 
+                    //icon : icons[iconCounter]
+                })
+                
+                var infoWindow = new google.maps.InfoWindow()
 
-            },
-            error: function(error) {
+                /*marker.addListener(marker,'click', function(map, marker)
+                {
+                  infoWindow.open(map, marker)
+                })*/
+                
+                google.maps.event.addListener( marker, 'click', function() 
+                {
+                   infoWindow.setContent( this.info );
+                   infoWindow.open( map, this );
+                });
+            }
+        },
+        error: function(error) {
             console.error("Error: " + error.code + " " + error.message)
-            }
-
-            })
-            break;
-        default:
-            console.log("Sorry, we could not find " + weatherid + ".");
-}
+        }
+    })
+    
 }
 
+var bounds,
+    map
+
+function initializeMap() 
+{
+    bounds = new google.maps.LatLngBounds();
+    var mapOptions = 
+    {
+        mapTypeId: 'roadmap',
+        center: {lat: 51.501489, lng: 0.004870},
+        zoom: 13
+    };
+    
+    // TODO styling the map https://developers.google.com/maps/documentation/javascript/styling
+    
+                    
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map"), mapOptions)
+}
+
+
+//google.maps.event.addDomListener(window, 'load', initializeMap)
     
    /* var condition;
     
