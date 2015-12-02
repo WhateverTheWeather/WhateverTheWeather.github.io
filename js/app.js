@@ -183,6 +183,7 @@ function handleData(json)
                 var name = place.get('Name')
                 var position = place.get('Position')
                 var description = place.get('Description')
+                var caption = place.get('Name') + place.get('Description') 
                 
                 var latLng = new google.maps.LatLng(position._latitude, position._longitude)
                 bounds.extend(latLng)
@@ -190,7 +191,8 @@ function handleData(json)
                     position: latLng,
                     map: map,
                     title: name,
-                    info: description // 
+                    info: caption
+                    // 
                     //icon : icons[iconCounter]
                 })
                 
@@ -203,8 +205,7 @@ function handleData(json)
                 
                 google.maps.event.addListener( marker, 'click', function() 
                 {
-                   infoWindow.setContent( this.title );
-                   infoWindow.setContent( this.info ); 
+                   infoWindow.setContent( this.info );
                    infoWindow.open( map, this );
                 });
             }
