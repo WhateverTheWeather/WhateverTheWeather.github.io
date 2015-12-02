@@ -183,7 +183,7 @@ function handleData(json)
                 var name = place.get('Name')
                 var position = place.get('Position')
                 var description = place.get('Description')
-                var caption = place.get('Name') + place.get('Description') 
+                var caption = place.get('Name') +  place.get('Description') 
                 
                 var latLng = new google.maps.LatLng(position._latitude, position._longitude)
                 bounds.extend(latLng)
