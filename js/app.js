@@ -10,20 +10,11 @@ Parse.initialize("wDjVVlo0q9ZJzzFOsfkNKsFIf3xWqwLXwXv29T2h", "qfWAIOVo9qEGQG2R6K
 
 */
 
-
-/*var Person = Parse.Object.extend("Person")
-      
-var kieran = new Person()
-
-kieran.set('name', 'kieran')
-kieran.set('year', 1)*/
-
 navigator.geolocation.watchPosition(gotPosition)
 
 function gotPosition(position) 
 {   
     getTheWeather(position)
-   /*console.log( "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);*/
 }
 
 // 2
@@ -191,14 +182,15 @@ function handleData(json)
                 var place = results[i]
                 var name = place.get('Name')
                 var position = place.get('Position')
-        
+                var description = place.get('Description')
+                
                 var latLng = new google.maps.LatLng(position._latitude, position._longitude)
                 bounds.extend(latLng)
                 var marker = new google.maps.Marker({
                     position: latLng,
                     map: map,
                     title: name,
-                    info: name // 
+                    info: description // 
                     //icon : icons[iconCounter]
                 })
                 
@@ -211,7 +203,8 @@ function handleData(json)
                 
                 google.maps.event.addListener( marker, 'click', function() 
                 {
-                   infoWindow.setContent( this.info );
+                   infoWindow.setContent( this.title );
+                   infoWindow.setContent( this.info ); 
                    infoWindow.open( map, this );
                 });
             }
