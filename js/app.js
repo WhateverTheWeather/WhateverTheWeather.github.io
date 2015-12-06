@@ -159,6 +159,7 @@ function handleData(json)
             console.log("Sorry, we could not find " + weatherid + ".");
     }
     
+    
     var weatherIconURL = 'AnimatedGif/' + currentWeather.toLowerCase() + '.gif'
     $('#gif').attr('src', weatherIconURL);
     
